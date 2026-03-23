@@ -139,8 +139,9 @@ app.post("/webhook", async (req, res) => {
     }
  
     try {
-      emailContext = await getRecentEmails(5);
+        emailContext = await getRecentEmails(5);
     } catch (e) {
+      console.error("EMAIL ERROR:", e.message, e.code, JSON.stringify(e.errors));
       emailContext = "Could not fetch emails.";
     }
  
